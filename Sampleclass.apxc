@@ -1,0 +1,11 @@
+public class sampleclass {
+    @AuraEnabled
+    public static String getData(Id recordId) {
+        String url;
+        List<Property__c> temp = [select Id,Image_URL__c from Property__c where Id =: recordId];
+        if(!temp.isEmpty()) {
+            return temp.get(0).Image_URL__c;
+        }
+        return null;
+    }
+}

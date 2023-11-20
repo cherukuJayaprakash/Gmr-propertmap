@@ -1,0 +1,16 @@
+<template>
+	<lightning-card variant="Narrow" title="All Properties" icon-name="standard:account">
+		<lightning-combobox name="category" label="Select Category" value={categoryValue}
+			placeholder="Select Type/Category" options={categories} onchange={handleChange}></lightning-combobox>
+	</lightning-card>
+
+
+	<div class="slds-grid slds-gutters slds-wrap slds-p-around_medium parent">
+		<template for:each={_properties} for:item="obj">
+			<div class="slds-col slds-size_1-of-5 card" style={obj.styleSheet} data-id={obj.Id} 
+            key={obj.Id} onclick={fireMessage}>
+				<span>{obj.Name__c}</span>
+			</div>
+		</template>
+	</div>
+</template>

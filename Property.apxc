@@ -1,0 +1,10 @@
+public class Property {
+	@AuraEnabled(cacheable=true)
+    public static List<Property__c> getproperties(){
+        return [SELECT Id, Name__c, Square_ft__c, Status__c, Type__c FROM Property__c order by Order__c];
+    }
+    @AuraEnabled(cacheable=true)
+    public static List<Opportunity> getOppo(String recId){
+        return [Select Id,Name,Account.Name,Lease_End_Date__c, Lease_Start_Date__c from Opportunity where Property__c=:recId];
+    }
+}
